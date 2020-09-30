@@ -21,18 +21,18 @@ var (
 
 type Engine struct {
 	*gin.Engine
-	Port   int
+	Port   string
 	server *http.Server
 }
 type Config struct {
 	Mode         string
-	Port         int
+	Port         string
 	ReadTimeOut  time.Duration
 	WriteTimeOut time.Duration
 }
 
 func Default() *Engine {
-	return &Engine{Engine: newGinEngine(gin.DebugMode), Port: 8080}
+	return &Engine{Engine: newGinEngine(gin.DebugMode), Port: ":8080"}
 }
 
 func NewEngine(conf Config) *Engine {
@@ -45,9 +45,8 @@ func NewEngine(conf Config) *Engine {
 
 //StartUp start with goroutine
 func (e *Engine) StartUp() {
-	port := fmt.Sprintf(":%d", e.Port)
 	s := &http.Server{
-		Addr:           port,
+		Addr:           e.Port,
 		Handler:        e,
 		ReadTimeout:    readTimeOut,
 		WriteTimeout:   writeTimeOut,

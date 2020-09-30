@@ -15,6 +15,12 @@ replace (
 	git.forms.io/universe/solapp-sdk => /Users/inori/go/src/git.forms.io/universe/solapp-sdk
 )
 ```
+
+2. 下载该包
+```shell
+go get github.com/yinjk/go-utils
+
+```
 3. 在main方法中编写
 ```go
 func main() {
