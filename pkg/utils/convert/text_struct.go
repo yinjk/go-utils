@@ -1,9 +1,10 @@
 package convert
 
 import (
-	"github.com/ghodss/yaml"
 	"reflect"
 	"strings"
+
+	"github.com/ghodss/yaml"
 )
 
 /**
@@ -105,6 +106,16 @@ func CollectionToDelimitedString(param []string) (s string) {
 	}
 	if s != "" {
 		s = s[:len(s)-1]
+	}
+	return
+}
+
+func CollectionToString(param []string, delimiter string) (s string) {
+	for _, v := range param {
+		s = s + v + delimiter
+	}
+	if s != "" {
+		s = s[:len(s)-len(delimiter)]
 	}
 	return
 }
