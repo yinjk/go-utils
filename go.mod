@@ -1,6 +1,6 @@
 module github.com/yinjk/go-utils
 
-go 1.13
+go 1.18
 
 require (
 	github.com/astaxie/beego v1.12.1 // indirect
